@@ -22,7 +22,7 @@ const ChatBot = () => {
     try {
       await axios
         .post(
-          "https://e63f4y64m4.execute-api.ap-south-1.amazonaws.com/prod/process_input",
+          "/prod/process_input",
           {
             question: inputMsgRef.current.value,
           }
@@ -30,7 +30,6 @@ const ChatBot = () => {
         .then((res) => {
           try {
             const response = res?.data?.processed_output;
-
             const item = document.createElement("div");
             item.classList.add("item");
             const icon = document.createElement("div");
