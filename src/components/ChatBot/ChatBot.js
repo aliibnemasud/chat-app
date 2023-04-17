@@ -35,6 +35,7 @@ const ChatBot = () => {
         )
         .then((res) => {
           try {
+            setError('');
             setSearching('')
             inputMsgRef.current.value = '';
            
@@ -112,7 +113,7 @@ const ChatBot = () => {
           <input
             ref={inputMsgRef}
             type="text"
-            placeholder="Type your message"
+            placeholder="Ask me anything"
             onKeyPress={handleKeyPress}           
             required
           />
