@@ -29,7 +29,7 @@ const ChatBot = () => {
         )
         .then((res) => {
           try {
-            const response = res.data.processed_output;
+            const response = res?.data?.processed_output;
 
             const item = document.createElement("div");
             item.classList.add("item");
@@ -40,7 +40,6 @@ const ChatBot = () => {
             const replay = document.createElement("div");
             replay.classList.add("msg");
             replay.innerHTML = `<p>${response}</p>`;
-
             item.appendChild(icon);
             icon.appendChild(iconSvf);
             item.appendChild(replay);
@@ -60,7 +59,7 @@ const ChatBot = () => {
   return (
     <div className="wrapper">
       {error && <p style={{color: 'red'}}> {error}</p> }
-      <div className="title">Simple Chatbot</div>
+      <div className="title">Ai Chatbot</div>
       <div ref={parentRef} className="box">
         {/* <div className="item">
           <div className="icon">
