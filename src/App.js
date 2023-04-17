@@ -1,10 +1,11 @@
 import "./App.css";
 import ChatBot from "./components/ChatBot/ChatBot";
-import Loading from "./shared/Loading";
+import Header from "./shared/Header";
 
 function App() {
   return (
-    <div className="App">          
+    <div className="App">
+      <Header/>         
       <ChatBot />
     </div>
   );
