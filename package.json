@@ -1,8 +1,8 @@
 {
   "name": "chat-app",
   "version": "0.1.0",
-  "proxy": "https://e63f4y64m4.execute-api.ap-south-1.amazonaws.com",
-  "homepage": "https://chat-app-phi-umber.vercel.app",
+  "proxy": "https://crossorigin.me/https://e63f4y64m4.execute-api.ap-south-1.amazonaws.com/prod/process_input",
+  "homepage": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
