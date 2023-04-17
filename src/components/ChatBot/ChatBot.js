@@ -1,13 +1,16 @@
 import React, { useRef, useState } from "react";
 import "./ChaBot.css";
 import axios from "axios";
+import Loading from "../../shared/Loading";
 
 const ChatBot = () => {
   const parentRef = useRef(null);
   const inputMsgRef = useRef("");
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");  
+  const [searching, setSearching] = useState("");
 
-  const handleClick = async () => {
+
+  const handleClick = async () => {   
     const box = document.createElement("div");
     box.classList.add("item", "right");
     const boxMessage = document.createElement("div");
@@ -16,19 +19,20 @@ const ChatBot = () => {
     box.appendChild(boxMessage);
     boxMessage.classList.add("msg");
     parentRef.current.appendChild(box);
+    setSearching('Searching.....')
 
     /// Response  ///
-
-    try {
+    try {      
       await axios
         .post(
-          "/prod/process_input",
+          "/Stage/process_input",
           {
             question: inputMsgRef.current.value,
           }
         )
         .then((res) => {
           try {
+            setSearching('')
             const response = res?.data?.processed_output;
             const item = document.createElement("div");
             item.classList.add("item");
@@ -42,22 +46,31 @@ const ChatBot = () => {
             item.appendChild(icon);
             icon.appendChild(iconSvf);
             item.appendChild(replay);
-            parentRef.current.appendChild(item);
+            parentRef.current.appendChild(item);           
 
           } catch (error) {
+            setSearching('')
             setError(error.message);
-            console.log(error.message);
+            console.log(error);            
           }
         });
     } catch (error) {
-      setError(error.message);
+      setSearching('')      
+      setError(error.message);     
       console.log(error);
-    }
+    } 
   };
+
+  
 
   return (
     <div className="wrapper">
-      {error && <p style={{color: 'red'}}> {error}</p> }
+      {error && <p style={{ color: "red" }}> {error}</p>}
+      {searching &&
+        <p style={{display:'flex', color: "#3498db", flexDirection: "row-reverse",
+        padding: "20px"}}> <Loading/> {searching} </p>
+      }
+     
       <div className="title">Ai Chatbot</div>
       <div ref={parentRef} className="box">
         {/* <div className="item">

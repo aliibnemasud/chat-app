@@ -17,6 +17,7 @@
     min-height: 400px;
     max-height: 400px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .wrapper .box .item {
@@ -26,7 +27,7 @@
 }
 
 .wrapper .box .item .icon {
-    background: #007bff;
+    background: #e2e2e2;
     color: white;
     width: 40px;
     height: 40px;
@@ -36,11 +37,12 @@
 }
 
 .wrapper .box .item .msg {
-    background: #007bff;
-    color: white;
+    background: #e2e2e2;
+    word-wrap: break-word;
+    color: green;
     border-radius: 10px;
-    width: 150px;
-    margin-left: 10px;
+    width: 200px;
+    margin-left: 10px;    
 }
 
 .wrapper .box .item .msg p {
