@@ -12,6 +12,7 @@
 }
 
 .wrapper .box {
+    position: relative;
     border: 1px solid #efefef;
     padding: 10px 15px;
     min-height: 400px;

@@ -6,8 +6,10 @@ import Loading from "../../shared/Loading";
 const ChatBot = () => {
   const parentRef = useRef(null);
   const inputMsgRef = useRef("");
+  const sendMessageRef = useRef(null);
   const [error, setError] = useState("");  
   const [searching, setSearching] = useState("");
+  
 
 
   const handleClick = async () => {   
@@ -20,6 +22,7 @@ const ChatBot = () => {
     boxMessage.classList.add("msg");
     parentRef.current.appendChild(box);
     setSearching('Searching.....')
+  
 
     /// Response  ///
     try {      
@@ -33,6 +36,8 @@ const ChatBot = () => {
         .then((res) => {
           try {
             setSearching('')
+            inputMsgRef.current.value = '';
+           
             const response = res?.data?.processed_output;
             const item = document.createElement("div");
             item.classList.add("item");
@@ -46,7 +51,7 @@ const ChatBot = () => {
             item.appendChild(icon);
             icon.appendChild(iconSvf);
             item.appendChild(replay);
-            parentRef.current.appendChild(item);           
+            parentRef.current.appendChild(item);            
 
           } catch (error) {
             setSearching('')
@@ -60,6 +65,17 @@ const ChatBot = () => {
       console.log(error);
     } 
   };
+
+
+  // Pressing enter to run function
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      sendMessageRef.current.click();
+      inputMsgRef.current.value = '';  
+    }
+  }
 
   
 
@@ -97,9 +113,10 @@ const ChatBot = () => {
             ref={inputMsgRef}
             type="text"
             placeholder="Type your message"
+            onKeyPress={handleKeyPress}           
             required
           />
-          <button onClick={handleClick}>Send</button>
+          <button ref={sendMessageRef} onClick={handleClick}>Send</button>
         </div>
       </div>
     </div>
