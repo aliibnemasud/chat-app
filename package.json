@@ -2,7 +2,7 @@
   "name": "chat-app",
   "version": "0.1.0",
   "proxy": "https://e63f4y64m4.execute-api.ap-south-1.amazonaws.com",
-  "homepage": "http://localhost:3000",
+  "homepage": "https://chat-app-phi-umber.vercel.app",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
